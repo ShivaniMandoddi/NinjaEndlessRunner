@@ -27,11 +27,11 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("IsJumping");
             rb.AddForce(Vector2.up * playerJumpForce);
         }
-        if(Input.GetKeyDown(KeyCode.A))
+        if(Input.GetKeyDown(KeyCode.E))
         {
             animator.SetTrigger("IsAttacking");
         }
-        if(Input.GetKeyDown(KeyCode.S))
+        if(Input.GetKeyDown(KeyCode.Q))
         {
             animator.SetTrigger("IsSliding");
         }
