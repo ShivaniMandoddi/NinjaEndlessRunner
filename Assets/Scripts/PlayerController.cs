@@ -11,11 +11,13 @@ public class PlayerController : MonoBehaviour
     public float playerJumpForce;
     public float playerSpeed;
     float inputX;
+    ScoreCalculator scoreCalculator;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         render = GetComponent<SpriteRenderer>();
+        scoreCalculator = GameObject.Find("ScoreManager").GetComponent<ScoreCalculator>();
     }
 
     // Update is called once per frame
@@ -46,6 +48,13 @@ public class PlayerController : MonoBehaviour
             
         //Need to do running part
     }
-    
-    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag=="Gems")
+        {
+            Destroy(collision.gameObject);
+            scoreCalculator.Score();
+        }
+    }
+
 }
